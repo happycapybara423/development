@@ -1,0 +1,99 @@
+[
+    {
+      "name": "Bulbasaur",
+      "description": "Bulbasaur is a small, squat amphibian and plant Pokémon. It has a blue-green body with dark green spots and a green plant bulb on its back.",
+      "price": 3.99,
+      "image": "images/bulbasaur.png",
+      "type": "Grass",
+      "region": "Kanto"
+    },
+    {
+      "name": "Charmander",
+      "description": "Charmander is a small, bipedal, dinosaur-like Pokémon with a primarily orange body. It has a flame that is constantly burning on the end of its tail.",
+      "price": 4.99,
+      "image": "images/charmander.png",
+      "type": "Fire",
+      "region": "Kanto"
+    },
+    {
+      "name": "Squirtle",
+      "description": "Squirtle is a turtle-like Pokémon with large eyes and chubby cheeks. Its skin is light blue, and it has a long, curled tail and a shell on its back.",
+      "price": 2.99,
+      "image": "images/squirtle.png",
+      "type": "Water",
+      "region": "Kanto"
+    },
+    {
+      "name": "Chikorita",
+      "description": "Chikorita is a small, pale-green, quadrupedal Pokémon with dark-green buds around its neck. On top of its head is a large, green leaf.",
+      "price": 4.99,
+      "image": "images/chikorita.png",
+      "type": "Grass",
+      "region": "Johto"
+    },
+    {
+      "name": "Cyndaquil",
+      "description": "Cyndaquil is a small, bipedal mammalian Pokémon with a long, thin snout and bluish fur. It has flames on its back that look like spines.",
+      "price": 3.99,
+      "image": "images/cyndaquil.png",
+      "type": "Fire",
+      "region": "Johto"
+    },
+    {
+      "name": "Totodile",
+      "description": "Totodile is a bipedal, crocodilian Pokémon with well-developed jaws. Down its back is a row of three red spines with a small, red ridge on either side.",
+      "price": 4.99,
+      "image": "images/totodile.png",
+      "type": "Water",
+      "region": "Johto"
+    },
+    {
+      "name": "Treecko",
+      "description": "Treecko is a small, green, bipedal reptilian Pokémon. It has yellow eyes with long, narrow pupils. Treecko's hands and feet are covered with tiny spikes.",
+      "price": 4.99,
+      "image": "images/treecko.png",
+      "type": "Grass",
+      "region": "Hoenn"
+    },
+    {
+      "name": "Torchic",
+      "description": "Torchic is a small, chick Pokémon with stubby, downy, yellow wings. There is an orange and yellow crest on its head that resembles a flame.",
+      "price": 2.99,
+      "image": "images/torchic.png",
+      "type": "Fire",
+      "region": "Hoenn"
+    },
+    {
+      "name": "Mudkip",
+      "description": "Mudkip is a small, amphibious, quadrupedal Pokémon. It has a blue body with a fin on its head and tail and star-shaped gills on its cheeks.",
+      "price": 1.99,
+      "image": "images/mudkip.png",
+      "type": "Water",
+      "region": "Hoenn"
+    },
+    {
+      "name": "Turtwig",
+      "description": "Turtwig is a small, turtle-like quadrupedal Pokémon. It is primarily light green with yellow eyes, feet, and lower jaw, and it has a brown shell made of earth.",
+      "price": 3.99,
+      "image": "images/turtwig.png",
+      "type": "Grass",
+      "region": "Sinnoh"
+    },
+    {
+      "name": "Chimchar",
+      "description": "Chimchar is a bipedal Pokémon resembling a chimpanzee. Its fur is primarily orange, although its face, outer ears, underbelly, hands, and feet are light yellow. ",
+      "price": 2.99,
+      "image": "images/chimchar.png",
+      "type": "Fire",
+      "region": "Sinnoh"
+    },
+    {
+      "name": "Piplup",
+      "description": "Piplup is a light-blue, penguin-like Pokémon. It has a dark blue head and feathers with a primarily white face and a short, yellow beak.",
+      "price": 2.99,
+      "image": "images/piplup.png",
+      "type": "Water",
+      "region": "Sinnoh"
+    }
+   
+  ]
