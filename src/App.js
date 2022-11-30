@@ -2,16 +2,18 @@ import "./App.css";
 import { useState } from "react";
 import PokemonData from "./assets/PokemonData.json";
 import PokemonCard from "./components/PokemonCard";
+import Stack from '@mui/material/Stack';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+
+
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import Navbar from 'react-bootstrap/Navbar';
-import Container from 'react-bootstrap/Container';
-import Stack from '@mui/material/Stack';
-
-import Nav from 'react-bootstrap/Nav';
 
 /* ####### DO NOT TOUCH -- this makes the image URLs work ####### */
 PokemonData.forEach((item) => {
@@ -24,6 +26,9 @@ function App() {
   /* add your cart state code here */
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
+	const [type, setType] = useState("All");
+	const [region, setRegion] = useState("All");
+  const [sort, setSort] = useState("popular");
 
   const addToCart = (item) => {
     console.log(item.name);
@@ -32,74 +37,101 @@ function App() {
     setTotal(total + item.price);
   };
 
+  const typeFilter = item => {
+    // all items should be shown when no filter is selected
+    if(type === "All") { 
+      return true
+    } else if (type === item.type) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  const regionFilter = item => {
+    // all items should be shown when no filter is selected
+    if(region === "All") { 
+      return true
+    } else if (region === item.region) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  const filteredTypeData = PokemonData.filter(typeFilter)
+  const filteredRegionData = filteredTypeData.filter(regionFilter)
+
+
+  const selectFilterType = eventKey => {
+    setType(eventKey);
+  };
+  
+  const selectFilterRegion = eventKey => {
+    setRegion(eventKey);
+  };
+
+  const selectSortType = eventKey => {
+    console.log(eventKey)
+    setSort(eventKey);
+  };
+
+  const mySortFunction = (a, b) => {
+    
+  }
+
+  const sortedArray = filteredRegionData.sort(mySortFunction)
+
+  
+  
   return (
     <div className="background">
       <div className="App">
         <h1>Pokémon Starter Trading Cards</h1>
         <div className="appContent">
           <div className="Sidebar">
+            
           <Navbar expand="lg" variant="light" bg="light">
             <Stack direction="column" spacing={1}>
-              <FormControl>
-                <FormLabel>Sort By</FormLabel>
-                <RadioGroup
-                  defaultValue="original"
-                  name="radio-buttons-group"
-                >
-                  <FormControlLabel value="original" control={<Radio />} label="Original" />
-                  <FormControlLabel value="name" control={<Radio />} label="Name" />
-                  <FormControlLabel value="price" control={<Radio />} label="Price" />
-                </RadioGroup>
-              </FormControl>
 
-              <FormControl>
-                <FormLabel id="demo-radio-buttons-group-label">Type</FormLabel>
-                <RadioGroup
-                  aria-labelledby="demo-radio-buttons-group-label"
-                  defaultValue="all"
-                  name="radio-buttons-group"
-                >
-                  <FormControlLabel value="all" control={<Radio />} label="All" />
-                  <FormControlLabel value="grass" control={<Radio />} label="Grass" />
-                  <FormControlLabel value="fire" control={<Radio />} label="Fire" />
-                  <FormControlLabel value="water" control={<Radio />} label="Water" />
-                </RadioGroup>
-              </FormControl>
+              {/* Sorting */}
+              <NavDropdown title="Sort by" onSelect={selectSortType}>
+                <NavDropdown.Item eventKey="All">All</NavDropdown.Item>
+                <NavDropdown.Item eventKey="Name">Name</NavDropdown.Item>
+                <NavDropdown.Item eventKey="Price">Price</NavDropdown.Item>
+              </NavDropdown>
 
-              <FormControl>
-                <FormLabel id="demo-radio-buttons-group-label">Region</FormLabel>
-                <RadioGroup
-                  aria-labelledby="demo-radio-buttons-group-label"
-                  defaultValue="all"
-                  name="radio-buttons-group"
-                >
-                  <FormControlLabel value="all" control={<Radio />} label="All" />
-                  <FormControlLabel value="kanto" control={<Radio />} label="Kanto" />
-                  <FormControlLabel value="johto" control={<Radio />} label="Johto" />
-                  <FormControlLabel value="hoenn" control={<Radio />} label="Hoenn" />
-                  <FormControlLabel value="sinnoh" control={<Radio />} label="Sinnoh" />
-                </RadioGroup>
-              </FormControl>
+              {/* Filter by Type */}
+              <NavDropdown title="Type" onSelect={selectFilterType}>
+                <NavDropdown.Item eventKey="All">All</NavDropdown.Item>
+                <NavDropdown.Item eventKey="Grass">Grass</NavDropdown.Item>
+                <NavDropdown.Item eventKey="Fire">Fire</NavDropdown.Item>
+                <NavDropdown.Item eventKey="Water">Water</NavDropdown.Item>
+              </NavDropdown>
+
+              {/* Filter by Region */}
+              <NavDropdown title="Region" onSelect={selectFilterRegion}>
+                <NavDropdown.Item eventKey="All">All</NavDropdown.Item>
+                <NavDropdown.Item eventKey="Kanto">Kanto</NavDropdown.Item>
+                <NavDropdown.Item eventKey="Johto">Johto</NavDropdown.Item>
+                <NavDropdown.Item eventKey="Hoenn">Hoenn</NavDropdown.Item>
+                <NavDropdown.Item eventKey="Sinnoh">Sinnoh</NavDropdown.Item>
+              </NavDropdown>
+
             </Stack>
           </Navbar>
         </div>  
         
         <div className="row-container">
-          {/* TODO: personalize your bakery (if you want) */}
-          {PokemonData.map(
-            (
-              item,
-              index // TODO: map bakeryData to BakeryItem components
-            ) => (
-              <PokemonCard key={index} item={item} onClick={addToCart} /> // replace with BakeryItem component
+          {sortedArray.map((item, index) => (
+              <PokemonCard key={index} item={item}  onClick={addToCart} /> 
             )
           )}
         </div>
 
         <div>
           <h2>Cart</h2>
-          {/* TODO: render a list of items in the cart */}
-          {cart.map((item, index) => (
+          {cart.map((item) => (
             <p>
               {item.name} ${item.price}
             </p>

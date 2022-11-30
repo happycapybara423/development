@@ -8,7 +8,7 @@ export default function PokemonCard({ item, onClick }) {
     return (
       <div className="item">
         <img src={item.image}></img>
-        <h3>{item.name} &nbsp;•&nbsp; ${item.price}</h3>
+        <h4>{item.name} &nbsp;•&nbsp; ${item.price}</h4>
         <p>{item.description}</p>
         <Stack direction="row" spacing={1}>
           <Chip label={item.type} />
