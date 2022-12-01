@@ -6,15 +6,12 @@ import Stack from '@mui/material/Stack';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
-/* ####### DO NOT TOUCH -- this makes the image URLs work ####### */
 PokemonData.forEach((item) => {
   item.image = process.env.PUBLIC_URL + "/" + item.image;
 });
-/* ############################################################## */
 
 function App() {
-  // TODO: use useState to create a state variable to hold the state of the cart
-  /* add your cart state code here */
+
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
 	const [type, setType] = useState("All");
@@ -37,13 +34,6 @@ function App() {
     setTotal(total + item.price);
   };
 
-  // const removeFromCart = (item) => {
-  //   console.log(item.name);
-  //   console.log(cart);
-  //   setCart([...cart, item]);
-  //   setTotal(total - item.price);
-  // };
-
   const removeFromCart = (item) => {
     const exist = cart.find((x) => x.name === item.name);
     if (exist.qty === 1) {
@@ -59,7 +49,6 @@ function App() {
   };
 
   const typeFilter = item => {
-    // all items should be shown when no filter is selected
     if(type === "All") { 
       return true
     } else if (type === item.type) {
@@ -70,7 +59,6 @@ function App() {
   }
 
   const regionFilter = item => {
-    // all items should be shown when no filter is selected
     if(region === "All") { 
       return true
     } else if (region === item.region) {
@@ -98,7 +86,7 @@ function App() {
   const mySortFunction = (a, b) => {
     if(sort === "Popular") { 
 
-        return 1;
+        return;
         
     } else if (sort === "Alphabetical"){
      
@@ -119,7 +107,7 @@ function App() {
   return (
     <div className="background">
       <div className="App">
-        <h1>Pokémon Starter Trading Cards</h1>
+        <h1>Starter Pokémon Trading Card Shop</h1>
         <div className="appContent">
           <div className="Sidebar">
           
