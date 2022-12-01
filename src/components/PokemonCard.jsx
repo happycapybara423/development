@@ -4,7 +4,8 @@ import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 
-export default function PokemonCard({ item, onClick }) {
+export default function PokemonCard({ item, onAdd, onRemove }) {
+  
     return (
       <div className="item">
         <img src={item.image}></img>
@@ -15,7 +16,11 @@ export default function PokemonCard({ item, onClick }) {
           <Chip label={item.region} variant="outlined" />
         </Stack>
         <br></br>
-        <Button variant="contained" onClick={() => onClick(item)}>Add to Cart</Button>
+        <Stack direction="column" spacing={1}>
+          <Button size="small" variant="contained" onClick={() => onAdd(item)}>Add to Cart</Button>
+          <Button color="error" size="small" variant="contained" onClick={() => onRemove(item)}>Remove from Cart</Button>
+        </Stack>
+        
       </div>
     );
   }
